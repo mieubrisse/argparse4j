@@ -86,7 +86,7 @@ public final class ArgumentImpl implements Argument {
                         "mutually exclusive arguments must be optional");
             }
             name_ = nameOrFlags[0];
-            if (!config.noDestConversionForPositionalArgs_) {
+            if (!config.noDestConversionForArgs_) {
                 dest_ = name_.replace('-', '_');
             }
         } else {
@@ -112,7 +112,10 @@ public final class ArgumentImpl implements Argument {
                     break;
                 }
             }
-            dest_ = config.prefixPattern_.removePrefix(dest_).replace('-', '_');
+            dest_ = config.prefixPattern_.removePrefix(dest_);
+            if (!config.noDestConversionForArgs_) {
+                dest_ = dest_.replace('-', '_');
+            }
         }
     }
 

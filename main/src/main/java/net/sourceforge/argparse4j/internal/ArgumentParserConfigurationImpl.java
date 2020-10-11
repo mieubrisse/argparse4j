@@ -19,7 +19,7 @@ public class ArgumentParserConfigurationImpl
     final TextWidthCounter textWidthCounter_;
     final int formatWidth_;
     final boolean singleMetavar_;
-    final boolean noDestConversionForPositionalArgs_;
+    final boolean noDestConversionForArgs_;
 
     public ArgumentParserConfigurationImpl(String prog, boolean addHelp,
             String prefixChars, String fromFilePrefix, Locale locale,
@@ -38,14 +38,14 @@ public class ArgumentParserConfigurationImpl
         textWidthCounter_ = textWidthCounter;
         formatWidth_ = formatWidth;
         singleMetavar_ = singleMetavar;
-        noDestConversionForPositionalArgs_ = noDestConversionForPositionalArgs;
+        noDestConversionForArgs_ = noDestConversionForPositionalArgs;
     }
 
     private ArgumentParserConfigurationImpl(String prog, boolean addHelp,
             String prefixChars, String fromFilePrefix,
             ResourceBundle resourceBundle, TextWidthCounter textWidthCounter,
             int formatWidth, boolean singleMetavar,
-            boolean noDestConversionForPositionalArgs) {
+            boolean noDestConversionForArgs) {
         prog_ = prog;
         addHelp_ = addHelp;
         prefixChars_ = prefixChars;
@@ -57,7 +57,7 @@ public class ArgumentParserConfigurationImpl
         textWidthCounter_ = textWidthCounter;
         formatWidth_ = formatWidth;
         singleMetavar_ = singleMetavar;
-        noDestConversionForPositionalArgs_ = noDestConversionForPositionalArgs;
+        noDestConversionForArgs_ = noDestConversionForArgs;
     }
 
     ArgumentParserConfigurationImpl forSubparser(boolean addHelp,
@@ -65,7 +65,7 @@ public class ArgumentParserConfigurationImpl
         return new ArgumentParserConfigurationImpl(prog_, addHelp, prefixChars,
                 fromFilePrefix_, resourceBundle_, textWidthCounter_,
                 formatWidth_, singleMetavar_,
-                noDestConversionForPositionalArgs_);
+                noDestConversionForArgs_);
     }
 
     public ResourceBundle getResourceBundle() {
